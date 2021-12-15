@@ -1,0 +1,67 @@
+{
+  "name": "threejs-site",
+  "version": "1.0.0",
+  "description": "threejs site",
+  "author": "Robert Herber",
+  "license": "MIT",
+  "main": "dist/index",
+  "types": "dist/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rob893/threejs-site.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/rob893/threejs-site/issues"
+  },
+  "homepage": "https://github.com/rob893/threejs-site#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build2": "rm -rf ./dist && tsc",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "prettier": "prettier --write **/*.{ts,js,css,html,json} !**/node_modules/** !**/dist/** !**/coverage/** !**/compiled/**",
+    "build-circular-dependency-check": "madge --circular ./dist",
+    "circular-dependency-check": "madge --circular --extensions ts --ts-config tsconfig.json ./src",
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage",
+    "test-clean": "jest --clearCache",
+    "test-mutate": "npx stryker run",
+    "validate": "npm run build && npm run build-circular-dependency-check && npm t && npm run lint",
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "rm -rf ./dist && tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@stryker-mutator/core": "^5.5.1",
+    "@stryker-mutator/jest-runner": "^5.5.1",
+    "@stryker-mutator/typescript-checker": "^5.5.1",
+    "@types/benchmark": "^2.1.1",
+    "@types/jest": "^27.0.3",
+    "@types/three": "^0.135.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
+    "madge": "^5.0.1",
+    "prettier": "^2.5.0",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2",
+    "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "three": "^0.135.0"
+  }
+}
